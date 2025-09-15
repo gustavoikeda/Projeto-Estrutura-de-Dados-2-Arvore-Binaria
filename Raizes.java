@@ -53,4 +53,18 @@ public class Raizes {
         }
         return percorrer(raiz_atual.direita, target_no);
     }
+    public void imprime(No p, String espaco){
+        if(p != null){
+            imprime(p.esquerda, espaco+" ");
+            System.out.println(espaco+p.nome);
+            imprime(p.direita, espaco+" ");
+        }
+    }
+    
+    public void imprimir(Raizes raizes){
+        for(int i = 0; i < raizes.getQuantidade_raizes(); i++){
+            No raiz_atual = raizes.getRaiz(i);
+            raizes.imprime(raiz_atual, " ");
+        }
+    }
 }
