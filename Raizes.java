@@ -1,10 +1,11 @@
+import java.util.ArrayList;
+
 public class Raizes {
-    No[] raizes;
+    ArrayList<No> raizes;
     int quantidade_raizes;
-    int tamanho = 100;
 
     public Raizes(){
-        this.raizes = new No[tamanho];
+        this.raizes = new ArrayList<>();
         this.quantidade_raizes = 0;
     }
 
@@ -13,21 +14,18 @@ public class Raizes {
     }
 
     public void inserir_raiz(No nova_raiz){
-        this.raizes[quantidade_raizes] = nova_raiz;
+        raizes.add(nova_raiz);
         this.quantidade_raizes++;
     }
 
-    public No getRaiz(int index){
-        if(index >= 0 && index < quantidade_raizes){
-            return raizes[index];
-        }
-        return null;
+    public void remover_raiz(No raiz_remover){
+        raizes.remove(raiz_remover);
+        this.quantidade_raizes--;
     }
 
-    public No get_No(No target_no, Raizes raizes){
-        for(int i = 0; i < raizes.getQuantidade_raizes(); i++)
+    public No get_No(No target_no){
+        for(No raiz_atual : raizes)
         {
-            No raiz_atual = raizes.getRaiz(i);
             No resultado = percorrer(raiz_atual, target_no);
             if(resultado != null)
             {
@@ -53,6 +51,7 @@ public class Raizes {
         }
         return percorrer(raiz_atual.direita, target_no);
     }
+
     public void imprime(No p, String espaco){
         if(p != null){
             imprime(p.esquerda, espaco+" ");
@@ -60,11 +59,12 @@ public class Raizes {
             imprime(p.direita, espaco+" ");
         }
     }
-    
-    public void imprimir(Raizes raizes){
-        for(int i = 0; i < raizes.getQuantidade_raizes(); i++){
-            No raiz_atual = raizes.getRaiz(i);
-            raizes.imprime(raiz_atual, " ");
+
+    public void imprime_todas_as_raizes(){
+        for(No raiz_atual : raizes)
+        {
+            System.out.println("Raiz: " + raiz_atual.nome);
+            imprime(raiz_atual, " ");
         }
     }
 }
