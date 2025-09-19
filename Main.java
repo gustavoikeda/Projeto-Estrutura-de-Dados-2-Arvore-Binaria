@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        File Nomes = new File("C:\\Users\\User\\IdeaProjects\\Projeto_ED_arvore\\src\\Nomes.txt");
+        File Nomes = new File("Nomes.txt); //caminho absoluto do arquivo Nomes.txt
         Raizes rz = new Raizes();
         Floresta fl = new Floresta();
         List<No> nos = new ArrayList<>();
